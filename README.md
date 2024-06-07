@@ -1,43 +1,115 @@
-# React + TypeScript + Vite + SQLite + Knex + Tailwind + ShadCN UI
+# Lazy-Load Gallery
 
-This template provides a fullstack setup with an SQLite/Knex backend and React/Tailwind/ShadCN UI frontend for easy component creation.
+This project is a simple gallery web application built with React, Vite, Tailwind CSS, and Shadcn UI. It allows you to display a collection of images with subtitles, with a responsive design that adjusts to different screen sizes.
 
-## Setup
+## Features
 
-#### Make sure to use Node version 20:
+- Responsive gallery layout
+- Flexbox-based design for auto-sizing and wrapping
+- Dynamic generation of image list from a directory
+- Simple setup with no database required
 
-```
-nvm use 20
-```
-or
-```
-nvm install 20
-```
-#### Install Packages:
-```
-npm i 
-```
+## Prerequisites
 
-## (FROM THE INITIAL VITE README)
+- Node.js and npm installed on your machine
 
-### Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Clone the repository:**
 
-- Configure the top-level `parserOptions` property like this:
+    ```bash
+    git clone https://github.com/yourusername/lazy-load-gallery.git
+    cd lazy-load-gallery
+    ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+2. **Install dependencies:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+1. **Add your images:**
+
+    Place your image files in the `public/images` directory. Make sure the images are named sequentially (e.g., `1.jpg`, `2.jpg`, ..., `13.jpg`).
+
+2. **Update subtitles:**
+
+    Open the `public/images/subtitles.json` file and add subtitles for your images. Here is an example:
+
+    ```json
+    {
+      "1.jpg": "Subtitle for Image 1",
+      "2.jpg": "Subtitle for Image 2",
+      "3.jpg": "Subtitle for Image 3",
+      "4.jpg": "Subtitle for Image 4",
+      "5.jpg": "Subtitle for Image 5",
+      "6.jpg": "Subtitle for Image 6",
+      "7.jpg": "Subtitle for Image 7",
+      "8.jpg": "Subtitle for Image 8",
+      "9.jpg": "Subtitle for Image 9",
+      "10.jpg": "Subtitle for Image 10",
+      "11.jpg": "Subtitle for Image 11",
+      "12.jpg": "Subtitle for Image 12",
+      "13.jpg": "Subtitle for Image 13"
+    }
+    ```
+
+3. **Generate the image list:**
+
+    Run the following command to generate the `imageList.json` file based on the images and subtitles:
+
+    ```bash
+    npm run generate:imageList
+    ```
+
+4. **Start the development server:**
+
+    To run the application locally, use:
+
+    ```bash
+    npm start
+    ```
+
+    Open your browser and navigate to `http://localhost:3000` to see the gallery.
+
+5. **Build the project:**
+
+    To build the project for production, use:
+
+    ```bash
+    npm run build
+    ```
+
+    The built files will be in the `dist` directory.
+
+## Project Structure
+
+- `public/images/`: Directory for image files and the `subtitles.json` file.
+- `src/components/`: Contains React components (`Card.tsx` and `ImageGallery.tsx`).
+- `scripts/generateImageList.js`: Script to generate the `imageList.json` file from the images and subtitles.
+- `tailwind.config.js`: Tailwind CSS configuration file.
+- `vite.config.js`: Vite configuration file.
+
+## Adding New Images
+
+To add new images, follow these steps:
+
+1. Place the new image files in the `public/images` directory.
+2. Update the `subtitles.json` file with subtitles for the new images.
+3. Run the `generate:imageList` script:
+
+    ```bash
+    npm run generate:imageList
+    ```
+
+4. Restart the development server if it's running.
+
+## Troubleshooting
+
+If you encounter issues, make sure you have followed all the steps correctly and check the browser console for any error messages. Feel free to reach out for further assistance.
+
+## License
+
+This project is licensed under the MIT License.
